@@ -1,0 +1,27 @@
+<!--
+Problem: A hospital wants to improve its website by providing an interactive hospital map.
+Visitors should be able to click different areas of a single hospital layout image to quickly access information about facilities.
+Design an HTML page that displays one hospital layout image with the following clickable regions:
+1.	Outpatient Department (OPD)
+o	Represented using a RECTANGLE image map
+o	Clicking should navigate to opd.html
+2.	Diagnostic Lab (Circular Building)
+o	Represented using a CIRCLE image map
+o	Clicking should navigate to lab.html
+3.	Emergency Zone (Irregular Area)
+o	Represented using a POLYGON image map
+o	Clicking should navigate to emergency.html
+-->
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <img src="opd.png" alt="Hospital Map" usemap="#hos" height="90%" width="100%">
+        <map name="hos">
+            <area shape="rect" coords="250,500,430,560" href="x.html" alt="OPD">
+            <area shape="circle" coords="770,520,60" href="y.html" alt="Emergency">
+            <area shape="poly" coords="1180,490,1240,470,1300,490,1320,540,1300,590,1240,610,1180,590,1160,540" href="z.html" alt="Diagnostic Lab">
+        </map>
+    </body>
+</html>

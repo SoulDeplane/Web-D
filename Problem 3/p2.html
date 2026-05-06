@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Job Application Form</title>
+    </head>
+    <style>
+        h1 {
+            font-size: 45px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        input, select, textarea {
+            font-size: 15px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .m1
+        {
+            background-color: rgb(46, 46, 123);
+            color:aliceblue;
+            padding: 5px;
+        }
+        .m2
+        {
+            background-color: #dfc6ad;
+            padding: 5px;
+        }
+    </style>
+    <body>
+        <div class="m1">
+            <h1 align="center">Job Application Form</h1>
+        </div>
+        <hr>
+        <form>
+            <div class="m2">
+                Full Name:
+                <input type="text" name="fullname" placeholder="Full Name" required minlength="4" title="Length must be of minimum 4 characters">
+                <br><br>
+                Email Address:
+                <input type="email" name="email" placeholder="Email Address" required title="Valid email must contain @">
+                <br><br>
+                Mobile Number:
+                <input type="text" name="mobilenumber" placeholder="Mobile Number" maxlength="10" required pattern="[6-9][0-9]{9}" title="Mobile number must contain only numbers">
+                <br><br>
+                Years of Experience:
+                <input type="number" name="experience" placeholder="Years" min="0" max="30" step="1" required title="Experience must be a number between 0 and 30">
+                <br><br>
+                Job Role:
+                <select name="jobrole" required>
+                    <option value="" disabled selected>Select Job Role</option>
+                    <option value="developer">Developer</option>
+                    <option value="designer">Designer</option>
+                    <option value="manager">Manager</option>
+                    <option value="tester">Tester</option>
+                </select>
+                <br><br>
+                Cover Letter:
+                <br><br>
+                <textarea name="coverletter" placeholder="Cover Letter" required minlength="100" maxlength="1000" rows="10" cols="30" title="Copy-Paste the Cover Letter"></textarea>
+                <br>
+            </div>
+            <hr>
+            <div class="m1">
+                <center>
+                    <input type="submit" value="Submit Application" style="background-color: green; color:aliceblue; border-color: white; padding: 5px;">
+                </center>
+            </div>
+        </form>
+    </body>
+</html> 

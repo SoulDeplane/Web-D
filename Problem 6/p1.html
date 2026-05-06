@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+    <link rel="stylesheet" href="s.css">
+    <style>
+        .form-container {
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #000;
+            width: 80%;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], select, textarea {
+            width: 95%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            color:aliceblue;
+        }
+        .college-name {
+            font-size: 50px;
+            margin: 0;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div>
+            <p class="college-name">Graphic Era (Deemed To Be) University</p>
+        </div>
+        <div>
+            <img src="https://imgs.search.brave.com/JH89w4f3hARZnIeKKG_X5RipKrKAen7YQCOvfw0oASo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWRtaXNzaW9uaW5k/aWEubmV0L3VwbG9h/ZHMvY29sbGVnZXMv/Ny9nZXUlMjBsZ28u/anBn" 
+                 title="Graphic Era (Deemed To Be) University" 
+                 alt="Graphic Era Logo" 
+                 style="height: 80px; width: auto;">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="form-container">
+        <h1>Student Feedback Form</h1>
+        <form action="p1a.html">
+            <label>Student Name:</label>
+            <input type="text" name="studentName" required>
+
+            <label>Email Address:</label>
+            <input type="email" name="email" required>
+
+            <label>Course Selection:</label>
+            <select name="course" required>
+                <option value="">-- Select Course --</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="M.Tech">M.Tech</option>
+                <option value="BCA">BCA</option>
+                <option value="MCA">MCA</option>
+            </select>
+
+            <label>Feedback / Comments:</label>
+            <textarea name="feedback" rows="4" required></textarea>
+
+            <br><br>
+            <div style="text-align: center;">
+                <input type="submit" value="Submit" style="background-color: rgb(61, 145, 57); color: white; padding: 10px 20px; border: none; cursor: pointer;">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

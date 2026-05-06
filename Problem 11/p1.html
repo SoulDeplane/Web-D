@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title> Stop Watch </title>
+    </head>
+    <style>
+        .st
+        {
+            background-color: rgb(215, 217, 228);
+            margin: 30px;
+            padding:50px;
+            border-radius:5%;
+        }
+        .mm
+        {
+            background-color: rgb(5, 55, 108);
+            height: 200px;
+            width:280px;
+            padding:20px;
+            color:white;
+            border-radius: 10%;
+        }
+        button
+        {
+            width: 100px;
+            height: 80px;
+            margin:3px;
+            color:white;
+            background-color: rgb(7, 14, 21);
+            border-radius:20%;
+        }
+        button:hover
+        {
+            background-color: rgb(129, 141, 175);
+        }
+        hr{
+            height: 3px;
+            background-color:rgb(5, 28, 52);
+        }
+        h1
+        {
+            font-size:40px;
+        }
+    </style>
+    <body>
+        <center>
+            <div class="st">
+                <h1 align="center"> Stop Watch </h1>
+                <hr>
+                <br><br>
+                <div id="stopwatch" class="mm">
+                    <br><br><br><br>
+                    <font size="10px">
+                        <span id="m">00</span> : <span id="s">00</span> : <span id="mi">00</span>
+                    </font>
+                </div>
+                <br>
+                <button onclick="Start()">Start</button>
+                <button onclick="Pause()">Pause</button>
+                <button onclick="Reset()">Reset</button>
+                <br><Br><Br>
+            </div>
+        </center>
+    </body>
+    <script>
+        let ms=0, s=0, m=0;
+        let timer=null;
+        const ax=document.getElementById("mi");
+        const bx=document.getElementById("s");
+        const cx=document.getElementById("m");
+        function Start()
+        {
+            if (timer !== null)
+                return; 
+            timer=setInterval(()=>
+            {
+                ms++;
+                if (ms == 100)
+                {
+                    ms=0;
+                    s++;
+                }
+                if (s == 60) {
+                    s=0;
+                    m++;
+                }
+                ax.innerText=ms<10?"0"+ms:ms;
+                bx.innerText=s<10?"0"+s:s;
+                cx.innerText=m<10?"0"+m:m;
+            }, 10);
+        }
+
+        function Pause()
+        {
+            clearInterval(timer);
+            timer=null; 
+        }
+        function Reset()
+        {
+            clearInterval(timer);
+            timer=null;
+            ms=0; s=0; m=0;
+            ax.innerText="00";
+            bx.innerText="00";
+            cx.innerText="00";
+        }
+    </script>
+</html>

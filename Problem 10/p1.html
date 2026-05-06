@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <title>Calendar</title>
+    </head>
+    <style>
+        body {
+            margin: 20px;
+            background-color: #082b49;
+            color:#f5f5f5
+        }
+        h1 {
+            text-align: center;
+            color: #f5f5f5;
+        }
+        select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        #calendar {
+            margin-top: 20px;
+        }
+        hr {
+            margin: 20px 0;
+            color: #98bad8
+        }
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            border-color: #d0e6f4;
+        }
+        th, td {
+            padding: 10px;
+            width: 40px;
+            border-color: #d0e6f4;
+        }
+    </style>
+    <body>
+        <h1>CALENDAR</h1>
+        <hr>
+        Month:
+        <select id="ms">
+            <option value="" disabled selected style="color: grey;">Select Month</option>
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select>
+        <br><br>
+        Year:
+        <select id="ys">
+            <option value="" disabled selected style="color: grey;">Select Year</option>
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+        </select>
+        <hr>
+        <div id="calendar">
+            <center>
+            <table border="4">
+                <thead></thead><th id="mh" colspan="7">Calendar</th></thead>
+                <tbody id="cb">
+                </tbody>
+            </table>
+            </center>
+        </div>
+    </body>
+    <script>
+        const ms = document.getElementById("ms");
+        const ys = document.getElementById("ys");
+        const cb = document.getElementById("cb");
+        const mh = document.getElementById("mh");
+        const w = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const m = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        function renderCalendar() {
+            const month = parseInt(ms.value);
+            const year = parseInt(ys.value);
+            if (isNaN(month) || isNaN(year)) {
+                return;
+            }
+            mh.textContent = m[month] + " " + year;
+            cb.innerHTML = "";
+            const hr = document.createElement("tr");
+            for (let i = 0; i < w.length; i++) {
+                const th = document.createElement("th");
+                th.textContent = w[i];
+                hr.appendChild(th);
+            }
+            cb.appendChild(hr);
+            const fd = new Date(year, month, 1).getDay();
+            const dm = new Date(year, month + 1, 0).getDate();
+            let date = 1;
+            for (let i = 0; i < 6; i++) {
+                const r = document.createElement("tr");
+                let emptyRow = true;
+                for (let j = 0; j < 7; j++) {
+                    const c = document.createElement("td");
+                    if (i === 0 && j < fd) {
+                        c.textContent = "";
+                    } else if (date > dm) {
+                        c.textContent = "";
+                    } else {
+                        c.textContent = date;
+                        date++;
+                        emptyRow = false;
+                    }
+                    r.appendChild(c);
+                }
+                if (!emptyRow) {
+                    cb.appendChild(r);
+                }
+            }
+        }
+        ms.addEventListener("change", renderCalendar);
+        ys.addEventListener("change", renderCalendar);
+    </script>
+</html>

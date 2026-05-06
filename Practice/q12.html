@@ -1,0 +1,240 @@
+<!--
+Problem: Online Examination Registration & Confirmation System
+An educational institution wants to develop a web-based online examination registration system for students. The system should interact with users using JavaScript window object methods to improve usability and confirmation.
+When a student opens the registration page:
+1.	Alert (alert ())
+o	The system displays an alert message informing the student about important exam instructions.
+2.	Prompt (prompt ())
+o	The system asks the student to enter their name or registration number.
+3.	Confirm (confirm ())
+o	After entering details, the system asks the student to confirm submission of the registration form.
+4.	Open (open ())
+o	If the student clicks OK, a new window opens showing the exam guidelines or hall-ticket preview.
+5.	Print (print ())
+o	The student is given an option to print the registration confirmation or hall ticket.
+6.	Close (close ())
+o	After printing, the system automatically closes the hall-ticket preview window.
+-->
+<html>
+    <head>
+        <title>Online Examination Registration and Confirmation System</title>
+    </head>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        h1 {
+            text-align: center;
+            font-size: 50px;
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            background-color: darkgreen;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            border: 2px solid black;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(196, 4, 4);
+        }
+    </style>
+    <body>
+        <h1>Graphic Era (Deemed To Be) University</h1>
+            <img src="https://imgs.search.brave.com/JH89w4f3hARZnIeKKG_X5RipKrKAen7YQCOvfw0oASo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWRtaXNzaW9uaW5k/aWEubmV0L3VwbG9h/ZHMvY29sbGVnZXMv/Ny9nZXUlMjBsZ28u/anBn"
+                width="200">
+        <button onclick="Alert()">Important Exam Instructions</button>
+        <button onclick="Prompt()">Register for Exam</button>
+        <button onclick="Open()">Admit Card</button>
+    </body>
+    <script>
+        let win;
+        let name = "";
+        let ro = "";
+        function Alert()
+        {
+            alert("Important Exam Instructions\n\n1. No electronic devices allowed\n2. Bring your ID card\n3. Reach 30 minutes early\n4. Follow invigilator instructions\n5. Do not cheat");
+        }
+        function Prompt() {
+            name = prompt("Enter your name:");
+            ro = prompt("Enter your roll number:");
+            if (!name || !ro) {
+                alert("Registration cancelled or incomplete.");
+                return;
+            }
+            let confirmRegister = confirm("Are you sure you want to register?");
+            if (confirmRegister) {
+                alert("Successfully registered!");
+            } else {
+                name = "";
+                ro = "";
+                alert("Registration cancelled.");
+            }
+        }
+        function Open() {
+            if (!name || !ro) {
+                alert("Please register first!");
+                return;
+            }
+            win = window.open("", "_blank", "width=800,height=800");
+            win.document.write(`
+                <html>
+                    <head>
+                        <title>Admit Card</title>
+                    </head>
+                    <style>
+                        body {
+                            font-family: Arial;
+                            padding: 15px;
+                        }
+                        h1 {
+                            text-align: center;
+                            font-size: 28px;
+                        }
+                        h2 {
+                            margin-bottom: 5px;
+                        }
+                        p {
+                            font-size: 13px;
+                            margin: 5px 0;
+                        }
+                        hr {
+                            margin: 8px 0;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 10px;
+                        }
+                        td, th {
+                            padding: 6px;
+                            text-align: center;
+                        }
+                        .btn-container {
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+                        button {
+                            padding: 6px 12px;
+                            margin: 5px;
+                            font-size: 12px;
+                            cursor: pointer;
+                        }
+                    </style>
+                    <body>
+                        <div style="display:flex; align-items:center;">
+                            <div style="width:90%;">
+                                <h1>Graphic Era (Deemed To Be) University</h1>
+                            </div>
+                            <div style="width:10%;">
+                                <img src="https://imgs.search.brave.com/JH89w4f3hARZnIeKKG_X5RipKrKAen7YQCOvfw0oASo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWRtaXNzaW9uaW5k/aWEubmV0L3VwbG9h/ZHMvY29sbGVnZXMv/Ny9nZXUlMjBsZ28u/anBn"
+                                width="70">
+                            </div>
+                        </div>
+                        <hr size="3">
+                        <img src="dp.jpg" width="150" height="180"
+                        style="float:right; margin-right:10px;">
+                        <h2>Student Details:</h2>
+                        <p><b>Name:</b> ${name}</p>
+                        <p><b>Roll No.:</b> ${ro}</p>
+                        <p><b>Section:</b> A</p>
+                        <p><b>Program:</b> B.Tech</p>
+                        <p><b>Course:</b> Computer Science and Engineering (Core)</p>
+                        <p><b>Semester:</b> 6</p>
+                        <p><b>Specialisation:</b> None</p>
+                        <p><b>Year:</b> 2026</p>
+                        <hr size="3">
+                        <h2>Exam Details:</h2>
+                        <table border="1">
+                            <tr>
+                                <th>Subject</th>
+                                <th>Code</th>
+                                <th>Time</th>
+                                <th>Date</th>
+                                <th>Venue</th>
+                                <th>Eligibility</th>
+                            </tr>
+                            <tr>
+                                <td>Compiler Design Lab</td>
+                                <td>PCS601</td>
+                                <td>10:00 - 12:00</td>
+                                <td>23-02-2026</td>
+                                <td>Lab 2 (CSIT Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Software Engineering Lab</td>
+                                <td>PCS611</td>
+                                <td>8:00 - 10:00</td>
+                                <td>24-02-2026</td>
+                                <td>Lab 2 (CSIT Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Software Engineering</td>
+                                <td>TCS611</td>
+                                <td>11:00 - 12:30</td>
+                                <td>25-02-2026</td>
+                                <td>CR-21 (Civil Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Career Skills</td>
+                                <td>XCS601</td>
+                                <td>11:00 - 12:30</td>
+                                <td>26-02-2026</td>
+                                <td>CR-21 (Civil Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Web Development Lab</td>
+                                <td>PCS693</td>
+                                <td>13:00 - 15:00</td>
+                                <td>27-02-2026</td>
+                                <td>Lab 2 (CSIT Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Computer Networks-II</td>
+                                <td>TCS614</td>
+                                <td>11:00 - 12:30</td>
+                                <td>02-03-2026</td>
+                                <td>CR-21 (Civil Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Full Stack Web Development</td>
+                                <td>TCS693</td>
+                                <td>11:00 - 12:30</td>
+                                <td>03-03-2026</td>
+                                <td>CR-21 (Civil Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Compiler Design</td>
+                                <td>TCS601</td>
+                                <td>11:00 - 12:30</td>
+                                <td>04-03-2026</td>
+                                <td>CR-21 (Civil Block)</td>
+                                <td>Yes</td>
+                            </tr>
+                        </table>
+                        <div class="btn-container">
+                            <button onclick="window.print()">Print</button>
+                            <button onclick="window.close()">Close</button>
+                        </div>
+                    </body>
+                </html>
+                `);
+            win.document.close();
+        }
+    </script>
+</html>

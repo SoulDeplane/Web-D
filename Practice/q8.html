@@ -1,0 +1,23 @@
+<!--
+Problem: Design an HTML page that creates a Company Creative Solutions Webpage with following requirements.
+1.	Divides the browser window into two horizontal frames:
+o Top frame for company header which contains Company name and Logo
+o Bottom frame for content
+2.	Further divides the bottom frame into two vertical frames:
+o Left frame for navigation menu
+o Right frame for main content
+3.	Uses a mixed frame layout (combination of rows and columns).
+4.	Loads different content pages dynamically in the content frame when menu links are clickeds.
+-->
+<html>
+    <head>
+        <title>Creative Solutions</title>
+    </head>
+    <frameset rows="15%, 85%" border="10px">
+        <frame name="header" src="a.html" noresize>
+        <frameset cols="20%, 80%" border="10px">
+            <frame name="menu" src="b.html" noresize>
+            <frame name="content" src="c.html">
+        </frameset>
+    </frameset>
+</html>
